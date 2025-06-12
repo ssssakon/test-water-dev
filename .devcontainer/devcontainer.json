@@ -1,0 +1,29 @@
+{
+  "dockerComposeFile": ["../docker-compose.yml"],
+  "service": "backend",                   // 例として backend コンテナにアタッチ
+  "runServices": ["db", "backend", "frontend"],
+  "workspaceFolder": "/workspace",        // モノレポのルートを開く
+  "forwardPorts": [8080, 5173],
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "20"                     // Node.js を追加インストール
+    }
+  },
+  "postCreateCommand": "cd frontend && npm install && cd ../backend && ./gradlew build",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "MS-CEINTL.vscode-language-pack-ja",
+        "bierner.markdown-mermaid",
+        "hediet.vscode-drawio",
+        "bpruitt-goddard.mermaid-markdown-syntax-highlighting",
+        "vscjava.vscode-gradle",
+        "redhat.java",
+        "poyonshot.markdowncat",
+        "vmware.vscode-spring-boot",
+        "vmware.vscode-boot-dev-pack",
+        "vscjava.vscode-java-test"
+      ]
+    }
+  }
+}

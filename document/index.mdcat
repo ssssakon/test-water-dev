@@ -1,0 +1,10 @@
+# 要件定義書
+$include="要件定義書.md"
+
+# 基本設計
+$include="基本設計\画面遷移図.md"
+$include="基本設計\画面レイアウト図.md"
+$include="基本設計\ER図.md"
+
+# 詳細設計
+$include="詳細設計\クラス図.md"

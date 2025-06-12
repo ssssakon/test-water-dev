@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: dev
+      POSTGRES_USER: dev
+      POSTGRES_PASSWORD: dev
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  backend:
+    image: gradle:8-jdk21
+    volumes:
+      - ./:/workspace           # ← ルートをマウント
+    working_dir: /workspace/backend
+    command: ["sleep", "infinity"]
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+
+  frontend:
+    image: node:20-bullseye
+    volumes:
+      - ./:/workspace           # ← 同じくルートをマウント
+    working_dir: /workspace/frontend
+    command: ["sleep", "infinity"]
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+
+volumes:
+  db_data:
