@@ -3,4 +3,3 @@
 cd backend
 bash ./gradlew bootRUN
 ```
-hoge
