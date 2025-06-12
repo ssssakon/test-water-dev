@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ログイン</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #f4f4f4;
+            text-align: center;
+            margin: 0;
+        }
+        .login-container {
+            background: #fff;
+            border-radius: 8px;
+            margin: 60px auto;
+            padding: 32px 24px;
+            max-width: 350px;
+            box-shadow: 0 2px 12px #0002;
+        }
+        h1 {
+            margin-bottom: 24px;
+        }
+        input[type="text"], input[type="password"] {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 16px;
+            border-radius: 4px;
+            border: 1px solid #bbb;
+            font-size: 16px;
+        }
+        button {
+            width: 90%;
+            background: #2196f3;
+            color: #fff;
+            font-size: 18px;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            margin-top: 12px;
+            cursor: pointer;
+        }
+        .error {
+            color: #c00;
+            margin-bottom: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>タスク管理アプリ<br>ログイン</h1>
+        <form th:action="@{/login}" method="post">
+            <div th:if="${param.error}" class="error">エラー：入力内容が正しくありません</div>
+            <input type="text" name="username" placeholder="ユーザーID" required />
+            <input type="password" name="password" placeholder="パスワード" required />
+            <button type="submit">ログイン</button>
+        </form>
+    </div>
+</body>
+</html>
